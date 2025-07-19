@@ -3,6 +3,10 @@
 # HOMEPAGE: https://github.com/markus-perl/ffmpeg-build-script
 # LICENSE: https://github.com/markus-perl/ffmpeg-build-script/blob/master/LICENSE
 
+
+CFLAGS="-I$WORKSPACE/include -Wno-int-conversion -march=native -mtune=native -mcpu=native -O3 -ffast-math -std=gnu17"
+CXXFLAGS=" -Wno-int-conversion -march=native -mtune=native -mcpu=native -O3 -ffast-math -fno-rtti"
+
 PROGNAME=$(basename "$0")
 FFMPEG_VERSION=7.1.1
 SCRIPT_VERSION=1.54
@@ -379,25 +383,25 @@ if build "giflib" "5.2.1"; then
   build_done "giflib" $CURRENT_PACKAGE_VERSION
 fi
 
-if build "pkg-config" "0.29.2"; then
-  download "https://pkgconfig.freedesktop.org/releases/pkg-config-$CURRENT_PACKAGE_VERSION.tar.gz"
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-  	export XXFLAGS +=" -Wno-int-conversion" # pkg-config 0.29.2 has a warning that is treated as an error
-  	export CFLAGS +=" -Wno-error=int-conversion"
-  fi
-  execute ./configure --silent --prefix="${WORKSPACE}" --with-pc-path="${WORKSPACE}"/lib/pkgconfig --with-internal-glib
-  execute make -j $MJOBS
-  execute make install
-  build_done "pkg-config" $CURRENT_PACKAGE_VERSION
-fi
+# if build "pkg-config" "0.29.2"; then
+#   download "https://pkgconfig.freedesktop.org/releases/pkg-config-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   if [[ "$OSTYPE" == "darwin"* ]]; then
+#   	export XXFLAGS +=" -Wno-int-conversion" # pkg-config 0.29.2 has a warning that is treated as an error
+#   	export CFLAGS +=" -Wno-error=int-conversion"
+#   fi
+#   execute ./configure --silent --prefix="${WORKSPACE}" --with-pc-path="${WORKSPACE}"/lib/pkgconfig --with-internal-glib
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "pkg-config" $CURRENT_PACKAGE_VERSION
+# fi
 
-if build "yasm" "1.3.0"; then
-  download "https://github.com/yasm/yasm/releases/download/v$CURRENT_PACKAGE_VERSION/yasm-$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute ./configure --prefix="${WORKSPACE}"
-  execute make -j $MJOBS
-  execute make install
-  build_done "yasm" $CURRENT_PACKAGE_VERSION
-fi
+# if build "yasm" "1.3.0"; then
+#   download "https://github.com/yasm/yasm/releases/download/v$CURRENT_PACKAGE_VERSION/yasm-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute ./configure --prefix="${WORKSPACE}"
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "yasm" $CURRENT_PACKAGE_VERSION
+# fi
 
 if build "nasm" "2.16.01"; then
   download "https://www.nasm.us/pub/nasm/releasebuilds/$CURRENT_PACKAGE_VERSION/nasm-$CURRENT_PACKAGE_VERSION.tar.xz"
@@ -415,55 +419,56 @@ if build "zlib" "1.3.1"; then
   build_done "zlib" $CURRENT_PACKAGE_VERSION
 fi
 
-if build "m4" "1.4.19"; then
-  download "https://ftp.gnu.org/gnu/m4/m4-$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute ./configure --prefix="${WORKSPACE}"
-  execute make -j $MJOBS
-  execute make install
-  build_done "m4" $CURRENT_PACKAGE_VERSION
-fi
+# if build "m4" "1.4.19"; then
+#   download "https://ftp.gnu.org/gnu/m4/m4-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute ./configure --prefix="${WORKSPACE}"
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "m4" $CURRENT_PACKAGE_VERSION
+# fi
 
-if build "autoconf" "2.72"; then
-  download "https://ftp.gnu.org/gnu/autoconf/autoconf-$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute ./configure --prefix="${WORKSPACE}"
-  execute make -j $MJOBS
-  execute make install
-  build_done "autoconf" $CURRENT_PACKAGE_VERSION
-fi
+# if build "autoconf" "2.72"; then
+#   download "https://ftp.gnu.org/gnu/autoconf/autoconf-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute ./configure --prefix="${WORKSPACE}"
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "autoconf" $CURRENT_PACKAGE_VERSION
+# fi
 
-if build "automake" "1.17"; then
-  download "https://ftp.gnu.org/gnu/automake/automake-$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute ./configure --prefix="${WORKSPACE}"
-  execute make -j $MJOBS
-  execute make install
-  build_done "automake" $CURRENT_PACKAGE_VERSION
-fi
+# if build "automake" "1.17"; then
+#   download "https://ftp.gnu.org/gnu/automake/automake-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute ./configure --prefix="${WORKSPACE}"
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "automake" $CURRENT_PACKAGE_VERSION
+# fi
 
-if build "libtool" "2.4.7"; then
-  download "https://ftpmirror.gnu.org/libtool/libtool-$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute ./configure --prefix="${WORKSPACE}" --enable-static --disable-shared
-  execute make -j $MJOBS
-  execute make install
-  build_done "libtool" $CURRENT_PACKAGE_VERSION
-fi
+# if build "libtool" "2.4.7"; then
+#   download "https://ftpmirror.gnu.org/libtool/libtool-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute ./configure --prefix="${WORKSPACE}" --enable-static --disable-shared
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "libtool" $CURRENT_PACKAGE_VERSION
+# fi
 
 if $NONFREE_AND_GPL; then
-  if build "gettext" "0.22.5"; then
-    download "https://ftpmirror.gnu.org/gettext/gettext-$CURRENT_PACKAGE_VERSION.tar.gz"
-    execute ./configure --prefix="${WORKSPACE}" --enable-static --disable-shared
-    execute make -j $MJOBS
-    execute make install
-    build_done "gettext" $CURRENT_PACKAGE_VERSION
-  fi
+  # if build "gettext" "0.22.5"; then
+  #   download "https://ftpmirror.gnu.org/gettext/gettext-$CURRENT_PACKAGE_VERSION.tar.gz"
+  #   execute ./configure --prefix="${WORKSPACE}" --enable-static --disable-shared
+  #   execute make -j $MJOBS
+  #   execute make install
+  #   build_done "gettext" $CURRENT_PACKAGE_VERSION
+  # fi
 
-  if build "openssl" "3.5.0"; then
-    download "https://github.com/openssl/openssl/archive/refs/tags/openssl-$CURRENT_PACKAGE_VERSION.tar.gz" "openssl-$CURRENT_PACKAGE_VERSION.tar.gz"
-    execute ./Configure --prefix="${WORKSPACE}" --openssldir="${WORKSPACE}" --libdir="lib" --with-zlib-include="${WORKSPACE}"/include/ --with-zlib-lib="${WORKSPACE}"/lib no-shared zlib
-    execute make -j $MJOBS
-    execute make install_sw
-    build_done "openssl" $CURRENT_PACKAGE_VERSION
-  fi
-  CONFIGURE_OPTIONS+=("--enable-openssl")
+  # if build "openssl" "3.5.0"; then
+  #   download "https://github.com/openssl/openssl/archive/refs/tags/openssl-$CURRENT_PACKAGE_VERSION.tar.gz" "openssl-$CURRENT_PACKAGE_VERSION.tar.gz"
+  #   execute ./Configure --prefix="${WORKSPACE}" --openssldir="${WORKSPACE}" --libdir="lib" --with-zlib-include="${WORKSPACE}"/include/ --with-zlib-lib="${WORKSPACE}"/lib no-shared zlib
+  #   execute make -j $MJOBS
+  #   execute make install_sw
+  #   build_done "openssl" $CURRENT_PACKAGE_VERSION
+  # fi
+  # CONFIGURE_OPTIONS+=("--enable-openssl")
+  echo "Hallo"
 else
   if build "gmp" "6.3.0"; then
     download "https://ftp.gnu.org/gnu/gmp/gmp-$CURRENT_PACKAGE_VERSION.tar.xz"
@@ -493,16 +498,16 @@ else
   fi
 fi
 
-if build "cmake" "3.31.7"; then
-  CXXFLAGS_BACKUP=$CXXFLAGS
-  export CXXFLAGS+=" -std=c++11"
-  download "https://github.com/Kitware/CMake/releases/download/v$CURRENT_PACKAGE_VERSION/cmake-$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute ./configure --prefix="${WORKSPACE}" --parallel="${MJOBS}" -- -DCMAKE_USE_OPENSSL=OFF
-  execute make -j $MJOBS
-  execute make install
-  build_done "cmake" $CURRENT_PACKAGE_VERSION
-  export CXXFLAGS=$CXXFLAGS_BACKUP
-fi
+# if build "cmake" "3.31.7"; then
+#   CXXFLAGS_BACKUP=$CXXFLAGS
+#   export CXXFLAGS+=" -std=c++11"
+#   download "https://github.com/Kitware/CMake/releases/download/v$CURRENT_PACKAGE_VERSION/cmake-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute ./configure --prefix="${WORKSPACE}" --parallel="${MJOBS}" -- -DCMAKE_USE_OPENSSL=OFF
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "cmake" $CURRENT_PACKAGE_VERSION
+#   export CXXFLAGS=$CXXFLAGS_BACKUP
+# fi
 
 ##
 ## video library
@@ -616,49 +621,49 @@ if $NONFREE_AND_GPL; then
   CONFIGURE_OPTIONS+=("--enable-libx264")
 fi
 
-if $NONFREE_AND_GPL; then
-  if build "x265" "4.1"; then
-    download "https://bitbucket.org/multicoreware/x265_git/downloads/x265_$CURRENT_PACKAGE_VERSION.tar.gz" "x265-$CURRENT_PACKAGE_VERSION.tar.gz" # This is actually 3.4 if looking at x265Version.txt
-    cd build/linux || exit
-    rm -rf 8bit 10bit 12bit 2>/dev/null
-    mkdir -p 8bit 10bit 12bit
-    cd 12bit || exit
-    execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON -DENABLE_HDR10_PLUS=ON -DEXPORT_C_API=OFF -DENABLE_CLI=OFF -DMAIN12=ON
-    execute make -j $MJOBS
-    cd ../10bit || exit
-    execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON -DENABLE_HDR10_PLUS=ON -DEXPORT_C_API=OFF -DENABLE_CLI=OFF
-    execute make -j $MJOBS
-    cd ../8bit || exit
-    ln -sf ../10bit/libx265.a libx265_main10.a
-    ln -sf ../12bit/libx265.a libx265_main12.a
-    execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DEXTRA_LIB="x265_main10.a;x265_main12.a;-ldl" -DEXTRA_LINK_FLAGS=-L. -DLINKED_10BIT=ON -DLINKED_12BIT=ON
-    execute make -j $MJOBS
+# if $NONFREE_AND_GPL; then
+#   if build "x265" "4.1"; then
+#     download "https://bitbucket.org/multicoreware/x265_git/downloads/x265_$CURRENT_PACKAGE_VERSION.tar.gz" "x265-$CURRENT_PACKAGE_VERSION.tar.gz" # This is actually 3.4 if looking at x265Version.txt
+#     cd build/linux || exit
+#     rm -rf 8bit 10bit 12bit 2>/dev/null
+#     mkdir -p 8bit 10bit 12bit
+#     cd 12bit || exit
+#     execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON -DENABLE_HDR10_PLUS=ON -DEXPORT_C_API=OFF -DENABLE_CLI=OFF -DMAIN12=ON
+#     execute make -j $MJOBS
+#     cd ../10bit || exit
+#     execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DHIGH_BIT_DEPTH=ON -DENABLE_HDR10_PLUS=ON -DEXPORT_C_API=OFF -DENABLE_CLI=OFF
+#     execute make -j $MJOBS
+#     cd ../8bit || exit
+#     ln -sf ../10bit/libx265.a libx265_main10.a
+#     ln -sf ../12bit/libx265.a libx265_main12.a
+#     execute cmake ../../../source -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DENABLE_SHARED=OFF -DBUILD_SHARED_LIBS=OFF -DEXTRA_LIB="x265_main10.a;x265_main12.a;-ldl" -DEXTRA_LINK_FLAGS=-L. -DLINKED_10BIT=ON -DLINKED_12BIT=ON
+#     execute make -j $MJOBS
 
-    mv libx265.a libx265_main.a
+#     mv libx265.a libx265_main.a
 
-    if [[ "$OSTYPE" == "darwin"* ]]; then
-      execute "${MACOS_LIBTOOL}" -static -o libx265.a libx265_main.a libx265_main10.a libx265_main12.a 2>/dev/null
-    else
-      execute ar -M <<EOF
-CREATE libx265.a
-ADDLIB libx265_main.a
-ADDLIB libx265_main10.a
-ADDLIB libx265_main12.a
-SAVE
-END
-EOF
-    fi
+#     if [[ "$OSTYPE" == "darwin"* ]]; then
+#       execute "${MACOS_LIBTOOL}" -static -o libx265.a libx265_main.a libx265_main10.a libx265_main12.a 2>/dev/null
+#     else
+#       execute ar -M <<EOF
+# CREATE libx265.a
+# ADDLIB libx265_main.a
+# ADDLIB libx265_main10.a
+# ADDLIB libx265_main12.a
+# SAVE
+# END
+# EOF
+#     fi
 
-    execute make install
+#     execute make install
 
-    if [ -n "$LDEXEFLAGS" ]; then
-      sed -i.backup 's/-lgcc_s/-lgcc_eh/g' "${WORKSPACE}/lib/pkgconfig/x265.pc" # The -i.backup is intended and required on MacOS: https://stackoverflow.com/questions/5694228/sed-in-place-flag-that-works-both-on-mac-bsd-and-linux
-    fi
+#     if [ -n "$LDEXEFLAGS" ]; then
+#       sed -i.backup 's/-lgcc_s/-lgcc_eh/g' "${WORKSPACE}/lib/pkgconfig/x265.pc" # The -i.backup is intended and required on MacOS: https://stackoverflow.com/questions/5694228/sed-in-place-flag-that-works-both-on-mac-bsd-and-linux
+#     fi
 
-    build_done "x265" $CURRENT_PACKAGE_VERSION
-  fi
-  CONFIGURE_OPTIONS+=("--enable-libx265")
-fi
+#     build_done "x265" $CURRENT_PACKAGE_VERSION
+#   fi
+#   CONFIGURE_OPTIONS+=("--enable-libx265")
+# fi
 
 if build "libvpx" "1.15.2"; then
   download "https://github.com/webmproject/libvpx/archive/refs/tags/v$CURRENT_PACKAGE_VERSION.tar.gz" "libvpx-$CURRENT_PACKAGE_VERSION.tar.gz"
@@ -677,44 +682,44 @@ if build "libvpx" "1.15.2"; then
 fi
 CONFIGURE_OPTIONS+=("--enable-libvpx")
 
-if $NONFREE_AND_GPL; then
-  if build "xvidcore" "1.3.7"; then
-    download "https://downloads.xvid.com/downloads/xvidcore-$CURRENT_PACKAGE_VERSION.tar.gz"
-    cd build/generic || exit
-    execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
-    execute make -j $MJOBS
-    execute make install
+# if $NONFREE_AND_GPL; then
+#   if build "xvidcore" "1.3.7"; then
+#     download "https://downloads.xvid.com/downloads/xvidcore-$CURRENT_PACKAGE_VERSION.tar.gz"
+#     cd build/generic || exit
+#     execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
+#     execute make -j $MJOBS
+#     execute make install
 
-    if [[ -f ${WORKSPACE}/lib/libxvidcore.4.dylib ]]; then
-      execute rm "${WORKSPACE}/lib/libxvidcore.4.dylib"
-    fi
+#     if [[ -f ${WORKSPACE}/lib/libxvidcore.4.dylib ]]; then
+#       execute rm "${WORKSPACE}/lib/libxvidcore.4.dylib"
+#     fi
 
-    if [[ -f ${WORKSPACE}/lib/libxvidcore.so ]]; then
-      execute rm "${WORKSPACE}"/lib/libxvidcore.so*
-    fi
+#     if [[ -f ${WORKSPACE}/lib/libxvidcore.so ]]; then
+#       execute rm "${WORKSPACE}"/lib/libxvidcore.so*
+#     fi
 
-    build_done "xvidcore" $CURRENT_PACKAGE_VERSION
-  fi
-  CONFIGURE_OPTIONS+=("--enable-libxvid")
-fi
+#     build_done "xvidcore" $CURRENT_PACKAGE_VERSION
+#   fi
+#   CONFIGURE_OPTIONS+=("--enable-libxvid")
+# fi
 
-if $NONFREE_AND_GPL; then
-  if build "vid_stab" "1.1.1"; then
-    download "https://github.com/georgmartius/vid.stab/archive/v$CURRENT_PACKAGE_VERSION.tar.gz" "vid.stab-$CURRENT_PACKAGE_VERSION.tar.gz"
+# if $NONFREE_AND_GPL; then
+#   if build "vid_stab" "1.1.1"; then
+#     download "https://github.com/georgmartius/vid.stab/archive/v$CURRENT_PACKAGE_VERSION.tar.gz" "vid.stab-$CURRENT_PACKAGE_VERSION.tar.gz"
 
-    if $MACOS_SILICON; then
-      curl -L --silent -o "$PACKAGES/vid.stab-$CURRENT_PACKAGE_VERSION/fix_cmake_quoting.patch" "https://raw.githubusercontent.com/Homebrew/formula-patches/5bf1a0e0cfe666ee410305cece9c9c755641bfdf/libvidstab/fix_cmake_quoting.patch"
-      patch -p1 <fix_cmake_quoting.patch
-    fi
+#     if $MACOS_SILICON; then
+#       curl -L --silent -o "$PACKAGES/vid.stab-$CURRENT_PACKAGE_VERSION/fix_cmake_quoting.patch" "https://raw.githubusercontent.com/Homebrew/formula-patches/5bf1a0e0cfe666ee410305cece9c9c755641bfdf/libvidstab/fix_cmake_quoting.patch"
+#       patch -p1 <fix_cmake_quoting.patch
+#     fi
 
-    execute cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DUSE_OMP=OFF -DENABLE_SHARED=off .
-    execute make
-    execute make install
+#     execute cmake -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DUSE_OMP=OFF -DENABLE_SHARED=off .
+#     execute make
+#     execute make install
 
-    build_done "vid_stab" $CURRENT_PACKAGE_VERSION
-  fi
-  CONFIGURE_OPTIONS+=("--enable-libvidstab")
-fi
+#     build_done "vid_stab" $CURRENT_PACKAGE_VERSION
+#   fi
+#   CONFIGURE_OPTIONS+=("--enable-libvidstab")
+# fi
 
 if build "av1" "10aece4157eb79315da205f39e19bf6ab3ee30d0"; then
   #  10aece4157eb79315da205f39e19bf6ab3ee30d0 == v3.12.1
@@ -736,7 +741,7 @@ CONFIGURE_OPTIONS+=("--enable-libaom")
 if build "zimg" "3.0.5"; then
   download "https://github.com/sekrit-twc/zimg/archive/refs/tags/release-$CURRENT_PACKAGE_VERSION.tar.gz" "zimg-$CURRENT_PACKAGE_VERSION.tar.gz" "zimg"
   cd zimg-release-$CURRENT_PACKAGE_VERSION || exit
-  execute "${WORKSPACE}/bin/libtoolize" -i -f -q
+  execute "libtoolize" -i -f -q
   execute ./autogen.sh --prefix="${WORKSPACE}"
   execute ./configure --prefix="${WORKSPACE}" --enable-static --disable-shared
   execute make -j $MJOBS
@@ -817,15 +822,15 @@ if ! $DISABLE_LV2 ; then
   fi
 fi
 
-if build "opencore" "0.1.6"; then
-  download "https://deac-ams.dl.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-$CURRENT_PACKAGE_VERSION.tar.gz" "opencore-amr-$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
-  execute make -j $MJOBS
-  execute make install
+# if build "opencore" "0.1.6"; then
+#   download "https://deac-ams.dl.sourceforge.net/project/opencore-amr/opencore-amr/opencore-amr-$CURRENT_PACKAGE_VERSION.tar.gz" "opencore-amr-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
+#   execute make -j $MJOBS
+#   execute make install
 
-  build_done "opencore" $CURRENT_PACKAGE_VERSION
-fi
-CONFIGURE_OPTIONS+=("--enable-libopencore_amrnb" "--enable-libopencore_amrwb")
+#   build_done "opencore" $CURRENT_PACKAGE_VERSION
+# fi
+# CONFIGURE_OPTIONS+=("--enable-libopencore_amrnb" "--enable-libopencore_amrwb")
 
 if build "lame" "3.100"; then
   download "https://sourceforge.net/projects/lame/files/lame/$CURRENT_PACKAGE_VERSION/lame-$CURRENT_PACKAGE_VERSION.tar.gz/download?use_mirror=gigenet" "lame-$CURRENT_PACKAGE_VERSION.tar.gz"
@@ -966,63 +971,63 @@ fi
 
 CONFIGURE_OPTIONS+=("--enable-libfreetype")
 
-if build "VapourSynth" "72"; then
-  # VapourSynth library is loaded dynamically by ffmpeg if a VapourSynth script is opened
-  # no need to build it at compile team, only headers need to be installed
-  download "https://github.com/vapoursynth/vapoursynth/archive/R$CURRENT_PACKAGE_VERSION.tar.gz"
-  execute mkdir -p "${WORKSPACE}/include/vapoursynth"
-  execute cp -r "include/." "${WORKSPACE}/include/vapoursynth/"
-  build_done "VapourSynth" $CURRENT_PACKAGE_VERSION
-fi
+# if build "VapourSynth" "72"; then
+#   # VapourSynth library is loaded dynamically by ffmpeg if a VapourSynth script is opened
+#   # no need to build it at compile team, only headers need to be installed
+#   download "https://github.com/vapoursynth/vapoursynth/archive/R$CURRENT_PACKAGE_VERSION.tar.gz"
+#   execute mkdir -p "${WORKSPACE}/include/vapoursynth"
+#   execute cp -r "include/." "${WORKSPACE}/include/vapoursynth/"
+#   build_done "VapourSynth" $CURRENT_PACKAGE_VERSION
+# fi
 
-CONFIGURE_OPTIONS+=("--enable-vapoursynth")
+# CONFIGURE_OPTIONS+=("--enable-vapoursynth")
 
-if $NONFREE_AND_GPL; then
-  if build "srt" "1.5.4"; then
-    download "https://github.com/Haivision/srt/archive/v$CURRENT_PACKAGE_VERSION.tar.gz" "srt-$CURRENT_PACKAGE_VERSION.tar.gz"
-    export OPENSSL_ROOT_DIR="${WORKSPACE}"
-    export OPENSSL_LIB_DIR="${WORKSPACE}"/lib
-    export OPENSSL_INCLUDE_DIR="${WORKSPACE}"/include/
-    execute cmake . -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_INCLUDEDIR=include -DENABLE_SHARED=OFF -DENABLE_STATIC=ON -DENABLE_APPS=OFF -DUSE_STATIC_LIBSTDCXX=ON
-    execute make install
+# if $NONFREE_AND_GPL; then
+#   if build "srt" "1.5.4"; then
+#     download "https://github.com/Haivision/srt/archive/v$CURRENT_PACKAGE_VERSION.tar.gz" "srt-$CURRENT_PACKAGE_VERSION.tar.gz"
+#     export OPENSSL_ROOT_DIR="${WORKSPACE}"
+#     export OPENSSL_LIB_DIR="${WORKSPACE}"/lib
+#     export OPENSSL_INCLUDE_DIR="${WORKSPACE}"/include/
+#     execute cmake . -DCMAKE_INSTALL_PREFIX="${WORKSPACE}" -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_INSTALL_BINDIR=bin -DCMAKE_INSTALL_INCLUDEDIR=include -DENABLE_SHARED=OFF -DENABLE_STATIC=ON -DENABLE_APPS=OFF -DUSE_STATIC_LIBSTDCXX=ON
+#     execute make install
 
-    if [ -n "$LDEXEFLAGS" ]; then
-      sed -i.backup 's/-lgcc_s/-lgcc_eh/g' "${WORKSPACE}"/lib/pkgconfig/srt.pc # The -i.backup is intended and required on MacOS: https://stackoverflow.com/questions/5694228/sed-in-place-flag-that-works-both-on-mac-bsd-and-linux
-    fi
+#     if [ -n "$LDEXEFLAGS" ]; then
+#       sed -i.backup 's/-lgcc_s/-lgcc_eh/g' "${WORKSPACE}"/lib/pkgconfig/srt.pc # The -i.backup is intended and required on MacOS: https://stackoverflow.com/questions/5694228/sed-in-place-flag-that-works-both-on-mac-bsd-and-linux
+#     fi
 
-    build_done "srt" $CURRENT_PACKAGE_VERSION
-  fi
-  CONFIGURE_OPTIONS+=("--enable-libsrt")
+#     build_done "srt" $CURRENT_PACKAGE_VERSION
+#   fi
+#   CONFIGURE_OPTIONS+=("--enable-libsrt")
 
-  if build "zvbi" "0.2.44"; then
-    download "https://github.com/zapping-vbi/zvbi/archive/refs/tags/v$CURRENT_PACKAGE_VERSION.tar.gz" "zvbi-$CURRENT_PACKAGE_VERSION.tar.gz"
-    execute ./autogen.sh --prefix="${WORKSPACE}"
-    execute ./configure CFLAGS="-I${WORKSPACE}/include/libpng16 ${CFLAGS}" --prefix="${WORKSPACE}" --enable-static --disable-shared
-    execute make -j $MJOBS
-    execute make install
-    build_done "zvbi" $CURRENT_PACKAGE_VERSION
-  fi
-  CONFIGURE_OPTIONS+=("--enable-libzvbi")
-fi
+#   if build "zvbi" "0.2.44"; then
+#     download "https://github.com/zapping-vbi/zvbi/archive/refs/tags/v$CURRENT_PACKAGE_VERSION.tar.gz" "zvbi-$CURRENT_PACKAGE_VERSION.tar.gz"
+#     execute ./autogen.sh --prefix="${WORKSPACE}"
+#     execute ./configure CFLAGS="-I${WORKSPACE}/include/libpng16 ${CFLAGS}" --prefix="${WORKSPACE}" --enable-static --disable-shared
+#     execute make -j $MJOBS
+#     execute make install
+#     build_done "zvbi" $CURRENT_PACKAGE_VERSION
+#   fi
+#   CONFIGURE_OPTIONS+=("--enable-libzvbi")
+# fi
 
 ##
 ## zmq library
 ##
 
-if build "libzmq" "4.3.5"; then
-  download "https://github.com/zeromq/libzmq/releases/download/v$CURRENT_PACKAGE_VERSION/zeromq-$CURRENT_PACKAGE_VERSION.tar.gz"
-  if [[ "$OSTYPE" == "darwin"* ]]; then
-    export XML_CATALOG_FILES=/usr/local/etc/xml/catalog 
-  fi
-  execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
-  sed "s/stats_proxy stats = {0}/stats_proxy stats = {{{0, 0}, {0, 0}}, {{0, 0}, {0, 0}}}/g" src/proxy.cpp >src/proxy.cpp.patched
-  rm src/proxy.cpp
-  mv src/proxy.cpp.patched src/proxy.cpp
-  execute make -j $MJOBS
-  execute make install
-  build_done "libzmq" $CURRENT_PACKAGE_VERSION
-  CONFIGURE_OPTIONS+=("--enable-libzmq")
-fi
+# if build "libzmq" "4.3.5"; then
+#   download "https://github.com/zeromq/libzmq/releases/download/v$CURRENT_PACKAGE_VERSION/zeromq-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   if [[ "$OSTYPE" == "darwin"* ]]; then
+#     export XML_CATALOG_FILES=/usr/local/etc/xml/catalog 
+#   fi
+#   execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
+#   sed "s/stats_proxy stats = {0}/stats_proxy stats = {{{0, 0}, {0, 0}}, {{0, 0}, {0, 0}}}/g" src/proxy.cpp >src/proxy.cpp.patched
+#   rm src/proxy.cpp
+#   mv src/proxy.cpp.patched src/proxy.cpp
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "libzmq" $CURRENT_PACKAGE_VERSION
+#   CONFIGURE_OPTIONS+=("--enable-libzmq")
+# fi
 
 ##
 ## HWaccel library

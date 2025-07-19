@@ -1,19 +1,19 @@
-FROM ubuntu:24.04 AS build
+FROM ubuntu:25.10 AS build
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install build-essential curl ca-certificates libva-dev \
-        python3 python-is-python3 ninja-build meson git curl \
+        python3 python-is-python3 ninja-build meson git curl autotools-dev automake autoconf libtool cmake yasm pkg-config \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
     && update-ca-certificates
 
 WORKDIR /app
 COPY ./build-ffmpeg /app/build-ffmpeg
 
-RUN SKIPINSTALL=yes /app/build-ffmpeg --build
+RUN SKIPINSTALL=yes /app/build-ffmpeg --build --enable-gpl-and-non-free --latest --full-static
 
-FROM ubuntu:24.04
+FROM ubuntu:25.10
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -28,9 +28,9 @@ COPY --from=build /app/workspace/bin/ffprobe /usr/bin/ffprobe
 COPY --from=build /app/workspace/bin/ffplay /usr/bin/ffplay
 
 # Check shared library
-RUN ldd /usr/bin/ffmpeg
-RUN ldd /usr/bin/ffprobe
-RUN ldd /usr/bin/ffplay
+#RUN ldd /usr/bin/ffmpeg
+#RUN ldd /usr/bin/ffprobe
+#RUN ldd /usr/bin/ffplay
 
 CMD         ["--help"]
 ENTRYPOINT  ["/usr/bin/ffmpeg"]
