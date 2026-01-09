@@ -1,0 +1,128 @@
+ffmpeg version 8.0 Copyright (c) 2000-2025 the FFmpeg developers
+  built with gcc 15 (Ubuntu 15.2.0-4ubuntu4)
+  configuration: --enable-nonfree --enable-gpl --enable-libdav1d --enable-libsvtav1 --enable-libx264 --enable-libvpx --enable-libaom --enable-libzimg --enable-lv2 --enable-libmp3lame --enable-libopus --enable-libvorbis --enable-libtheora --enable-libfdk-aac --enable-libjxl --enable-libwebp --enable-libfreetype --enable-vulkan --enable-libglslang --disable-ffnvcodec --enable-amf --enable-opencl --disable-debug --disable-shared --enable-pthreads --enable-static --enable-version3 --extra-cflags='-I/app/workspace/include -Wno-int-conversion -march=native -mtune=native -Ofast -ffast-math -std=gnu17 -fPIC -I/app/workspace/include/lilv-0' --extra-ldexeflags='-static -fPIC' --extra-ldflags=-L/app/workspace/lib --extra-libs='-ldl -lpthread -lm -lz' --pkgconfigdir=/app/workspace/lib/pkgconfig --pkg-config-flags=--static --prefix=/app/workspace --extra-version=
+  libavutil      60.  8.100 / 60.  8.100
+  libavcodec     62. 11.100 / 62. 11.100
+  libavformat    62.  3.100 / 62.  3.100
+  libavdevice    62.  1.100 / 62.  1.100
+  libavfilter    11.  4.100 / 11.  4.100
+  libswscale      9.  1.100 /  9.  1.100
+  libswresample   6.  1.100 /  6.  1.100
+[h264 @ 0x310d3070] Increasing reorder buffer to 2
+[matroska,webm @ 0x310ce4c0] DTS discontinuity in stream 0: packet 37 with DTS 600, packet 38 with DTS 129520
+[matroska,webm @ 0x310ce4c0] DTS discontinuity in stream 4: packet 12 with DTS 305, packet 13 with DTS 128969
+Input #0, matroska,webm, from '/srv/tvh/recordings/Die-Bibel/Die-Bibel-----Spielfilm,-USA-Italien-1966-.mkv':
+  Metadata:
+    title           : Die Bibel
+    encoder         : Tvheadend Matroska muxer
+    DATE_BROADCASTED: 2025-12-21 15:14:00
+    ORIGINAL_MEDIA_TYPE: TV
+    CONTENT_TYPE    : Arts / Culture (without music)
+    TVCHANNEL       : 3sat HD
+    SUMMARY         : Historienfilm, USA / Italien 1966
+                    : Der opulente Monumentalfilm beginnt am Anfang aller Geschichten: mit der bildgewaltigen Schöpfung der Erde und der Erschaffung der ersten Menschen Adam und Eva.
+                    : 
+                    : Im Stil eines Historienfilms werden die ersten 22 Kapitel des Buches Genesis erzählt. - Mit Starbesetzung, großartigen Kulissen und seiner kraftvollen Inszenierung schuf John Huston ein mitreißendes, bildstarkes Filmepos, das den biblischen Text ernst 
+                    : Darsteller:
+                    : Noah - John Huston
+                    : Adam - Michael Parks
+                    : Eva - Ulla Bergryd
+                    : Kain - Richard Harris
+                    : Nimrod - Stephen Boyd
+                    : Abraham - George C. Scott
+                    : Regie: John Huston
+                    : 
+                    : HD-Produktion
+    SUMMARY-ger     : Historienfilm, USA / Italien 1966
+                    : Der opulente Monumentalfilm beginnt am Anfang aller Geschichten: mit der bildgewaltigen Schöpfung der Erde und der Erschaffung der ersten Menschen Adam und Eva.
+                    : 
+                    : Im Stil eines Historienfilms werden die ersten 22 Kapitel des Buches Genesis erzählt. - Mit Starbesetzung, großartigen Kulissen und seiner kraftvollen Inszenierung schuf John Huston ein mitreißendes, bildstarkes Filmepos, das den biblischen Text ernst 
+                    : Darsteller:
+                    : Noah - John Huston
+                    : Adam - Michael Parks
+                    : Eva - Ulla Bergryd
+                    : Kain - Richard Harris
+                    : Nimrod - Stephen Boyd
+                    : Abraham - George C. Scott
+                    : Regie: John Huston
+                    : 
+                    : HD-Produktion
+    SUBTITLE        : Spielfilm, USA/Italien 1966
+    SUBTITLE-ger    : Spielfilm, USA/Italien 1966
+  Duration: 02:46:34.24, start: 0.017000, bitrate: 12227 kb/s
+  Stream #0:0(eng): Video: h264 (High), yuv420p(tv, bt709, progressive), 1280x720 [SAR 1:1 DAR 16:9], 50 fps, 50 tbr, 1k tbn, start 0.040000 (default)
+  Stream #0:1(ger): Audio: mp2, 48000 Hz, stereo, s16p, 256 kb/s, start 128.781000 (default)
+  Stream #0:2(mis): Audio: mp2, 48000 Hz, stereo, s16p, 192 kb/s, start 128.753000 (default)
+  Stream #0:3(ger): Audio: ac3, 48000 Hz, stereo, fltp, 448 kb/s, start 128.767000 (default)
+  Stream #0:4(mul): Audio: mp2, 48000 Hz, stereo, s16p, 192 kb/s, start 0.017000 (default)
+  Stream #0:5(ger): Subtitle: dvb_subtitle (dvbsub), start 0.017000 (default)
+Stream mapping:
+  Stream #0:0 -> #0:0 (h264 (native) -> av1 (libsvtav1))
+  Stream #0:3 -> #0:1 (copy)
+Press [q] to stop, [?] for help
+Odd rotation angle.
+If you want to help, upload a sample of this file to https://streams.videolan.org/upload/ and contact the ffmpeg-devel mailing list. (ffmpeg-devel@ffmpeg.org)co located POCs unavailable
+[h264 @ 0x312d5ad0] co located POCs unavailable
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [version]:	SVT-AV1 Encoder Lib v3.1.2
+Svt[info]: SVT [build]  :	GCC 15.2.0	 64 bit
+Svt[info]: LIB Build date: Jan  9 2026 17:09:52
+Svt[info]: -------------------------------------------
+Svt[info]: Level of Parallelism: 3
+Svt[info]: Number of PPCS 74
+Svt[info]: [asm level on system : up to neon_dotprod]
+Svt[info]: [asm level selected : up to neon_dotprod]
+Svt[info]: -------------------------------------------
+Svt[info]: SVT [config]: main profile	tier (auto)	level (auto)
+Svt[info]: SVT [config]: width / height / fps numerator / fps denominator 		: 1280 / 584 / 50 / 1
+Svt[info]: SVT [config]: bit-depth / color format 					: 8 / YUV420
+Svt[info]: SVT [config]: preset / tune / pred struct 					: 1 / VQ / random access
+Svt[info]: SVT [config]: gop size / mini-gop size / key-frame type 			: 500 / 32 / key frame
+Svt[info]: SVT [config]: BRC mode / rate factor 					: CRF / 23 
+Svt[info]: SVT [config]: AQ mode / Variance Boost 					: 2 / 0
+Svt[info]: SVT [config]: sharpness / luminance-based QP bias 				: 0 / 0
+Svt[info]: -------------------------------------------
+[mp4 @ 0x3113d700] track 1: codec frame size is not set
+Output #0, mp4, to '/home/pi/Die-Bibel_1966.mp4':
+  Metadata:
+    title           : Die Bibel
+    SUBTITLE-ger    : Spielfilm, USA/Italien 1966
+    DATE_BROADCASTED: 2025-12-21 15:14:00
+    ORIGINAL_MEDIA_TYPE: TV
+    CONTENT_TYPE    : Arts / Culture (without music)
+    TVCHANNEL       : 3sat HD
+    SUMMARY         : Historienfilm, USA / Italien 1966
+                    : Der opulente Monumentalfilm beginnt am Anfang aller Geschichten: mit der bildgewaltigen Schöpfung der Erde und der Erschaffung der ersten Menschen Adam und Eva.
+                    : 
+                    : Im Stil eines Historienfilms werden die ersten 22 Kapitel des Buches Genesis erzählt. - Mit Starbesetzung, großartigen Kulissen und seiner kraftvollen Inszenierung schuf John Huston ein mitreißendes, bildstarkes Filmepos, das den biblischen Text ernst 
+                    : Darsteller:
+                    : Noah - John Huston
+                    : Adam - Michael Parks
+                    : Eva - Ulla Bergryd
+                    : Kain - Richard Harris
+                    : Nimrod - Stephen Boyd
+                    : Abraham - George C. Scott
+                    : Regie: John Huston
+                    : 
+                    : HD-Produktion
+    SUMMARY-ger     : Historienfilm, USA / Italien 1966
+                    : Der opulente Monumentalfilm beginnt am Anfang aller Geschichten: mit der bildgewaltigen Schöpfung der Erde und der Erschaffung der ersten Menschen Adam und Eva.
+                    : 
+                    : Im Stil eines Historienfilms werden die ersten 22 Kapitel des Buches Genesis erzählt. - Mit Starbesetzung, großartigen Kulissen und seiner kraftvollen Inszenierung schuf John Huston ein mitreißendes, bildstarkes Filmepos, das den biblischen Text ernst 
+                    : Darsteller:
+                    : Noah - John Huston
+                    : Adam - Michael Parks
+                    : Eva - Ulla Bergryd
+                    : Kain - Richard Harris
+                    : Nimrod - Stephen Boyd
+                    : Abraham - George C. Scott
+                    : Regie: John Huston
+                    : 
+                    : HD-Produktion
+    SUBTITLE        : Spielfilm, USA/Italien 1966
+    encoder         : Lavf62.3.100
+  Stream #0:0(eng): Video: av1 (av01 / 0x31307661), yuv420p(tv, bt709, progressive), 1280x584 [SAR 1:1 DAR 160:73], q=2-31, 50 fps, 12800 tbn (default)
+    Metadata:
+      encoder         : Lavc62.11.100 libsvtav1
+  Stream #0:1(ger): Audio: ac3 (ac-3 / 0x332D6361), 48000 Hz, stereo, fltp, 448 kb/s (default)
+frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:00.50    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:01.00    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:01.50    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:02.01    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:02.51    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:03.02    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:03.52    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:04.02    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:04.52    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:05.02    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:05.52    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:06.02    frame=    0 fps=0.0 q=0.0 size=       0KiB time=N/A bitrate=N/A speed=N/A elapsed=0:00:06.52    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:07.03    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:07.53    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:08.03    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:08.53    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:09.03    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:09.53    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:10.03    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:10.53    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:11.03    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:11.53    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:12.03    frame=    1 fps=0.1 q=5.0 size=       0KiB time=00:00:00.00 bitrate=N/A speed=   0x elapsed=0:00:12.53    frame=    3 fps=0.2 q=15.0 size=       0KiB time=00:00:00.04 bitrate=  10.4kbits/s speed=0.00307x elapsed=0:00:13.03    frame=    4 fps=0.3 q=23.0 size=       0KiB time=00:00:00.06 bitrate=   6.9kbits/s speed=0.00443x elapsed=0:00:13.54    frame=    7 fps=0.5 q=14.0 size=       0KiB time=00:00:00.12 bitrate=   3.5kbits/s speed=0.00855x elapsed=0:00:14.04    frame=    9 fps=0.6 q=13.0 size=       0KiB time=00:00:00.16 bitrate=   2.6kbits/s speed=0.011x elapsed=0:00:14.54    frame=   12 fps=0.8 q=23.0 size=       0KiB time=00:00:00.22 bitrate=   1.9kbits/s speed=0.0146x elapsed=0:00:15.04    frame=   12 fps=0.8 q=23.0 size=       0KiB time=00:00:00.22 bitrate=   1.9kbits/s speed=0.0142x elapsed=0:00:15.54    frame=   13 fps=0.8 q=12.0 size=       0KiB time=00:00:00.24 bitrate=   1.7kbits/s speed=0.015x elapsed=0:00:16.04    frame=   13 fps=0.8 q=12.0 size=       0KiB time=00:00:00.24 bitrate=   1.7kbits/s speed=0.0145x elapsed=0:00:16.54    frame=   14 fps=0.8 q=23.0 size=       0KiB time=00:00:00.26 bitrate=   1.6kbits/s speed=0.0152x elapsed=0:00:17.05    frame=   14 fps=0.8 q=23.0 size=       0KiB time=00:00:00.26 bitrate=   1.6kbits/s speed=0.0148x elapsed=0:00:17.55    frame=   15 fps=0.8 q=15.0 size=       0KiB time=00:00:00.28 bitrate=   1.5kbits/s speed=0.0155x elapsed=0:00:18.05    frame=   19 fps=1.0 q=15.0 size=       0KiB time=00:00:00.36 bitrate=   1.2kbits/s speed=0.0194x elapsed=0:00:18.55    frame=   21 fps=1.1 q=13.0 size=     256KiB time=00:00:00.40 bitrate=5243.9kbits/s speed=0.021x elapsed=0:00:19.05    frame=   22 fps=1.1 q=23.0 size=     256KiB time=00:00:00.42 bitrate=4994.2kbits/s speed=0.0215x elapsed=0:00:19.56    frame=   25 fps=1.2 q=9.0 size=     256KiB time=00:00:00.48 bitrate=4369.9kbits/s speed=0.0239x elapsed=0:00:20.06    frame=   27 fps=1.3 q=15.0 size=     256KiB time=00:00:00.52 bitrate=4033.8kbits/s speed=0.0253x elapsed=0:00:20.56    frame=   27 fps=1.3 q=15.0 size=     256KiB time=00:00:00.52 bitrate=4033.8kbits/s speed=0.0247x elapsed=0:00:21.06    frame=   27 fps=1.3 q=15.0 size=     256KiB time=00:00:00.52 bitrate=4033.8kbits/s speed=0.0241x elapsed=0:00:21.56    frame=   27 fps=1.2 q=15.0 size=     256KiB time=00:00:00.52 bitrate=4033.8kbits/s speed=0.0236x elapsed=0:00:22.07    frame=   27 fps=1.2 q=15.0 size=     256KiB time=00:00:00.52 bitrate=4033.8kbits/s speed=0.023x elapsed=0:00:22.57    frame=   27 fps=1.2 q=15.0 size=     256KiB time=00:00:00.52 bitrate=4033.8kbits/s speed=0.0225x elapsed=0:00:23.07    frame=   27 fps=1.1 q=15.0 size=     256KiB time=00:00:00.52 bitrate=4033.8kbits/s speed=0.0221x elapsed=0:00:23.57    frame=   28 fps=1.2 q=23.0 size=     256KiB time=00:00:00.54 bitrate=3884.4kbits/s speed=0.0224x elapsed=0:00:24.07    frame=   28 fps=1.1 q=23.0 size=     256KiB time=00:00:00.54 bitrate=3884.4kbits/s speed=0.022x elapsed=0:00:24.57    frame=   28 fps=1.1 q=23.0 size=     256KiB time=00:00:00.54 bitrate=3884.4kbits/s speed=0.0215x elapsed=0:00:25.07    frame=   29 fps=1.1 q=13.0 size=     256KiB time=00:00:00.56 bitrate=3745.7kbits/s speed=0.0219x elapsed=0:00:25.57    frame=   29 fps=1.1 q=13.0 size=     256KiB time=00:00:00.56 bitrate=3745.7kbits/s speed=0.0215x elapsed=0:00:26.07    frame=   30 fps=1.1 q=23.0 size=     256KiB time=00:00:00.58 bitrate=3616.5kbits/s speed=0.0218x elapsed=0:00:26.57    frame=   31 fps=1.1 q=15.0 size=     256KiB time=00:00:00.60 bitrate=3495.9kbits/s speed=0.0222x elapsed=0:00:27.07    frame=   31 fps=1.1 q=15.0 size=     256KiB time=00:00:00.60 bitrate=3495.9kbits/s speed=0.0218x elapsed=0:00:27.57    frame=   32 fps=1.1 q=23.0 size=     256KiB time=00:00:00.62 bitrate=3383.2kbits/s speed=0.0221x elapsed=0:00:28.07    frame=   34 fps=1.2 q=23.0 size=     256KiB time=00:00:00.66 bitrate=3178.1kbits/s speed=0.0231x elapsed=0:00:28.57    frame=   37 fps=1.3 q=12.0 size=     256KiB time=00:00:00.72 bitrate=2913.3kbits/s speed=0.0248x elapsed=0:00:29.08    frame=   39 fps=1.3 q=15.0 size=     256KiB time=00:00:00.76 bitrate=2760.0kbits/s speed=0.0257x elapsed=0:00:29.58    frame=   42 fps=1.4 q=23.0 size=     256KiB time=00:00:00.82 bitrate=2558.0kbits/s speed=0.0273x elapsed=0:00:30.08    frame=   44 fps=1.4 q=23.0 size=     256KiB time=00:00:00.86 bitrate=2439.0kbits/s speed=0.0281x elapsed=0:00:30.58    frame=   44 fps=1.4 q=23.0 size=     256KiB time=00:00:00.86 bitrate=2439.0kbits/s speed=0.0277x elapsed=0:00:31.08    frame=   45 fps=1.4 q=10.0 size=     256KiB time=00:00:00.88 bitrate=2383.6kbits/s speed=0.0279x elapsed=0:00:31.58    frame=   45 fps=1.4 q=10.0 size=     256KiB time=00:00:00.88 bitrate=2383.6kbits/s speed=0.0274x elapsed=0:00:32.08    frame=   46 fps=1.4 q=23.0 size=     256KiB time=00:00:00.90 bitrate=2330.6kbits/s speed=0.0276x elapsed=0:00:32.58    frame=   47 fps=1.4 q=15.0 size=     256KiB time=00:00:00.92 bitrate=2280.0kbits/s speed=0.0278x elapsed=0:00:33.08    frame=   50 fps=1.5 q=23.0 size=     256KiB time=00:00:00.98 bitrate=2140.4kbits/s speed=0.0292x elapsed=0:00:33.58    frame=   51 fps=1.5 q=15.0 size=     256KiB time=00:00:01.00 bitrate=2097.6kbits/s speed=0.0293x elapsed=0:00:34.09    frame=   54 fps=1.6 q=23.0 size=     256KiB time=00:00:01.06 bitrate=1978.8kbits/s speed=0.0306x elapsed=0:00:34.59    frame=   56 fps=1.6 q=23.0 size=     256KiB time=00:00:01.10 bitrate=1906.9kbits/s speed=0.0313x elapsed=0:00:35.09    frame=   57 fps=1.6 q=9.0 size=     256KiB time=00:00:01.12 bitrate=1872.8kbits/s speed=0.0315x elapsed=0:00:35.59    frame=   58 fps=1.6 q=23.0 size=     256KiB time=00:00:01.14 bitrate=1840.0kbits/s speed=0.0316x elapsed=0:00:36.09    frame=   58 fps=1.6 q=23.0 size=     256KiB time=00:00:01.14 bitrate=1840.0kbits/s speed=0.0312x elapsed=0:00:36.59    frame=   58 fps=1.6 q=23.0 size=     256KiB time=00:00:01.14 bitrate=1840.0kbits/s speed=0.0307x elapsed=0:00:37.09    frame=   59 fps=1.6 q=15.0 size=     256KiB time=00:00:01.16 bitrate=1808.2kbits/s speed=0.0309x elapsed=0:00:37.59    frame=   59 fps=1.5 q=15.0 size=     256KiB time=00:00:01.16 bitrate=1808.2kbits/s speed=0.0304x elapsed=0:00:38.09    frame=   59 fps=1.5 q=15.0 size=     256KiB time=00:00:01.16 bitrate=1808.2kbits/s speed=0.0301x elapsed=0:00:38.59    frame=   59 fps=1.5 q=15.0 size=     256KiB time=00:00:01.16 bitrate=1808.2kbits/s speed=0.0297x elapsed=0:00:39.09    frame=   59 fps=1.5 q=15.0 size=     256KiB time=00:00:01.16 bitrate=1808.2kbits/s speed=0.0293x elapsed=0:00:39.59    frame=   60 fps=1.5 q=23.0 size=     256KiB time=00:00:01.18 bitrate=1777.6kbits/s speed=0.0294x elapsed=0:00:40.09    frame=   60 fps=1.5 q=23.0 size=     256KiB time=00:00:01.18 bitrate=1777.6kbits/s speed=0.0291x elapsed=0:00:40.59    frame=   61 fps=1.5 q=13.0 size=     256KiB time=00:00:01.20 bitrate=1748.0kbits/s speed=0.0292x elapsed=0:00:41.09    frame=   61 fps=1.5 q=13.0 size=     256KiB time=00:00:01.20 bitrate=1748.0kbits/s speed=0.0288x elapsed=0:00:41.59    frame=   62 fps=1.5 q=23.0 size=     256KiB time=00:00:01.22 bitrate=1719.3kbits/s speed=0.029x elapsed=0:00:42.10    frame=   62 fps=1.5 q=23.0 size=     256KiB time=00:00:01.22 bitrate=1719.3kbits/s speed=0.0286x elapsed=0:00:42.60    frame=   63 fps=1.5 q=15.0 size=     256KiB time=00:00:01.24 bitrate=1691.6kbits/s speed=0.0288x elapsed=0:00:43.10    frame=   63 fps=1.4 q=15.0 size=     256KiB time=00:00:01.24 bitrate=1691.6kbits/s speed=0.0284x elapsed=0:00:43.60    frame=   64 fps=1.5 q=23.0 size=     256KiB time=00:00:01.26 bitrate=1664.7kbits/s speed=0.0286x elapsed=0:00:44.10    frame=   67 fps=1.5 q=15.0 size=     512KiB time=00:00:01.32 bitrate=3177.8kbits/s speed=0.0296x elapsed=0:00:44.60    frame=   69 fps=1.5 q=12.0 size=     512KiB time=00:00:01.36 bitrate=3084.4kbits/s speed=0.0302x elapsed=0:00:45.10    frame=   70 fps=1.5 q=23.0 size=     512KiB time=00:00:01.38 bitrate=3039.7kbits/s speed=0.0303x elapsed=0:00:45.60    frame=   71 fps=1.5 q=15.0 size=     512KiB time=00:00:01.40 bitrate=2996.2kbits/s speed=0.0304x elapsed=0:00:46.11    frame=   74 fps=1.6 q=23.0 size=     512KiB time=00:00:01.46 bitrate=2873.1kbits/s speed=0.0313x elapsed=0:00:46.61    frame=   76 fps=1.6 q=23.0 size=     512KiB time=00:00:01.50 bitrate=2796.5kbits/s speed=0.0318x elapsed=0:00:47.11    frame=   76 fps=1.6 q=23.0 size=     512KiB time=00:00:01.50 bitrate=2796.5kbits/s speed=0.0315x elapsed=0:00:47.61    frame=   77 fps=1.6 q=13.0 size=     512KiB time=00:00:01.52 bitrate=2759.7kbits/s speed=0.0316x elapsed=0:00:48.11    frame=   77 fps=1.6 q=13.0 size=     512KiB time=00:00:01.52 bitrate=2759.7kbits/s speed=0.0313x elapsed=0:00:48.61    frame=   78 fps=1.6 q=23.0 size=     512KiB time=00:00:01.54 bitrate=2723.8kbits/s speed=0.0314x elapsed=0:00:49.12    

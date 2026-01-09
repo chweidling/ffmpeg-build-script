@@ -9,8 +9,8 @@ CWD=$(pwd)
 PACKAGES="$CWD/packages"
 WORKSPACE="$CWD/workspace"
 #CFLAGS="-I$WORKSPACE/include -Wno-int-conversion"
-CFLAGS="-I$WORKSPACE/include -Wno-int-conversion -march=native -mtune=native -O3 -ffast-math -std=gnu17"
-CXXFLAGS="-I$WORKSPACE/include -Wno-int-conversion -march=native -mtune=native -O3 -ffast-math -fno-rtti"
+CFLAGS="-I$WORKSPACE/include -Wno-int-conversion -march=native -mtune=native -Ofast -ffast-math -std=gnu17 -pipe"
+CXXFLAGS="-I$WORKSPACE/include -Wno-int-conversion -march=native -mtune=native -Ofast -ffast-math -fno-rtti -pipe"
 LDFLAGS="-L$WORKSPACE/lib"
 LDEXEFLAGS=""
 EXTRALIBS="-ldl -lpthread -lm -lz"
@@ -906,15 +906,16 @@ if build "libtiff" "4.7.0"; then
   execute make install
   build_done "libtiff" $CURRENT_PACKAGE_VERSION
 fi
-if build "libpng" "1.6.50"; then
-  download "https://sourceforge.net/projects/libpng/files/libpng16/$CURRENT_PACKAGE_VERSION/libpng-$CURRENT_PACKAGE_VERSION.tar.gz" "libpng-$CURRENT_PACKAGE_VERSION.tar.gz"
-  export LDFLAGS="${LDFLAGS}"
-  export CPPFLAGS="${CFLAGS}"
-  execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
-  execute make -j $MJOBS
-  execute make install
-  build_done "libpng" $CURRENT_PACKAGE_VERSION
-fi
+
+# if build "libpng" "1.6.50"; then
+#   download "https://sourceforge.net/projects/libpng/files/libpng16/$CURRENT_PACKAGE_VERSION/libpng-$CURRENT_PACKAGE_VERSION.tar.gz" "libpng-$CURRENT_PACKAGE_VERSION.tar.gz"
+#   export LDFLAGS="${LDFLAGS}"
+#   export CPPFLAGS="${CFLAGS}"
+#   execute ./configure --prefix="${WORKSPACE}" --disable-shared --enable-static
+#   execute make -j $MJOBS
+#   execute make install
+#   build_done "libpng" $CURRENT_PACKAGE_VERSION
+# fi
 
 if build "libjxl" "0.11.1"; then
   download "https://github.com/libjxl/libjxl/archive/refs/tags/v$CURRENT_PACKAGE_VERSION.tar.gz" "libjxl-$CURRENT_PACKAGE_VERSION.tar.gz"
