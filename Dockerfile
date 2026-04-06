@@ -1,4 +1,4 @@
-FROM ubuntu:25.10 AS build
+FROM ubuntu:26.04 AS build
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -17,7 +17,7 @@ RUN --mount=type=cache,target=/app/workspace --mount=type=cache,target=/app/pack
     cp /app/workspace/bin/ffprobe /output/ffprobe && \
     cp /app/workspace/bin/ffplay /output/ffplay
 
-FROM ubuntu:25.10
+FROM ubuntu:26.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
