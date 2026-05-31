@@ -450,7 +450,7 @@ fi
 ##
 
 if build "giflib" "5.2.2"; then
-  download "https://sf-eu-introserv-1.dl.sourceforge.net/project/giflib/giflib-5.x/giflib-$CURRENT_PACKAGE_VERSION.tar.gz"
+  download "https://sf-eu-introserv-2.dl.sourceforge.net/project/giflib/giflib-5.x/giflib-$CURRENT_PACKAGE_VERSION.tar.gz"
   cd "${PACKAGES}"/giflib-$CURRENT_PACKAGE_VERSION || exit
   #building docs fails if the tools needed are not installed
   #there is no option to not build the docs on Linux, we need to modify the Makefile
