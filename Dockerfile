@@ -1,19 +1,23 @@
-FROM ubuntu:24.04 AS build
+FROM ubuntu:26.04 AS build
 
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
     && apt-get -y --no-install-recommends install build-essential curl ca-certificates libva-dev \
-        python3 python-is-python3 ninja-build meson git curl \
+        python3 python-is-python3 ninja-build meson git curl autotools-dev automake autoconf libtool cmake yasm pkg-config libtool \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/* \
     && update-ca-certificates
 
 WORKDIR /app
 COPY ./build-ffmpeg /app/build-ffmpeg
 
-RUN SKIPINSTALL=yes /app/build-ffmpeg --build
+RUN --mount=type=cache,target=/app/workspace --mount=type=cache,target=/app/packages SKIPINSTALL=yes /app/build-ffmpeg --build --enable-gpl-and-non-free --latest --full-static && \
+    mkdir /output && \
+    cp /app/workspace/bin/ffmpeg /output/ffmpeg && \
+    cp /app/workspace/bin/ffprobe /output/ffprobe && \
+    cp /app/workspace/bin/ffplay /output/ffplay
 
-FROM ubuntu:24.04
+FROM ubuntu:26.04
 
 ENV DEBIAN_FRONTEND=noninteractive
 
@@ -23,14 +27,14 @@ RUN apt-get update \
     && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 # Copy ffmpeg
-COPY --from=build /app/workspace/bin/ffmpeg /usr/bin/ffmpeg
-COPY --from=build /app/workspace/bin/ffprobe /usr/bin/ffprobe
-COPY --from=build /app/workspace/bin/ffplay /usr/bin/ffplay
+COPY --from=build /output/ffmpeg /usr/bin/ffmpeg
+COPY --from=build /output/ffprobe /usr/bin/ffprobe
+COPY --from=build /output/ffplay /usr/bin/ffplay
 
 # Check shared library
-RUN ldd /usr/bin/ffmpeg
-RUN ldd /usr/bin/ffprobe
-RUN ldd /usr/bin/ffplay
+#RUN ldd /usr/bin/ffmpeg
+#RUN ldd /usr/bin/ffprobe
+#RUN ldd /usr/bin/ffplay
 
 CMD         ["--help"]
 ENTRYPOINT  ["/usr/bin/ffmpeg"]
